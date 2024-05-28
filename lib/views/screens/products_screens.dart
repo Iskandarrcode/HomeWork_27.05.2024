@@ -20,6 +20,13 @@ class _ProductScreensState extends State<ProductScreens> {
   final positionController = TextEditingController();
   final skillController = TextEditingController();
 
+  final indexController2 = TextEditingController();
+  final nameController2 = TextEditingController();
+  final ageController2 = TextEditingController();
+  final positionController2 = TextEditingController();
+  final skillController2 = TextEditingController();
+  final indexController3 = TextEditingController();
+
   CompanyContoller companyCountrollers = CompanyContoller();
   final textFieldController = TextEditingController();
   bool isLoading = false;
@@ -55,8 +62,9 @@ class _ProductScreensState extends State<ProductScreens> {
             child: Column(
               children: [
                 ZoomTapAnimation(
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(
+                  onTap: () async {
+                    var newData =
+                        await Navigator.push(context, MaterialPageRoute(
                       builder: (context) {
                         return ToDoEdit(
                           indexController: indexController,
@@ -67,6 +75,15 @@ class _ProductScreensState extends State<ProductScreens> {
                         );
                       },
                     ));
+                    if (newData != null) {
+                      companyCountrollers.edit(
+                          newData["index"],
+                          newData["name"],
+                          newData["age"],
+                          newData["position"],
+                          newData["skills"]);
+                      setState(() {});
+                    }
                   },
                   child: const Text(
                     "Edit Employess",
@@ -82,11 +99,11 @@ class _ProductScreensState extends State<ProductScreens> {
                     Navigator.push(context, MaterialPageRoute(
                       builder: (context) {
                         return ToDoEdit3(
-                          indexController: indexController,
-                          nameController: nameController,
-                          ageController: ageController,
-                          positionController: positionController,
-                          skillController: skillController,
+                          indexController: indexController2,
+                          nameController: nameController2,
+                          ageController: ageController2,
+                          positionController: positionController2,
+                          skillController: skillController2,
                         );
                       },
                     ));
@@ -105,7 +122,7 @@ class _ProductScreensState extends State<ProductScreens> {
                     Navigator.push(context, MaterialPageRoute(
                       builder: (context) {
                         return ToDoEdit2(
-                          indexController: indexController,
+                          indexController: indexController3,
                         );
                       },
                     ));

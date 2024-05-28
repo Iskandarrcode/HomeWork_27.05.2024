@@ -9,7 +9,7 @@ class CompanyContoller {
     return [..._list];
   }
 
-  Future<void> getProducts() async{
+  Future<void> getProducts() async {
     const String url = '''
       {
         "company": "Tech Solutions",
@@ -37,5 +37,28 @@ class CompanyContoller {
     Map<String, dynamic> data = jsonDecode(url);
     _list.add(CompanyModels.fromJson(data));
   }
-  
+
+  // void delete(int index) {
+  //   _list.removeAt(index);
+  // }
+
+  void edit(int index, String name, int age, String position, List skills) {
+    _list[0].employees[index].name = name;
+    _list[0].employees[index].age = age;
+    _list[0].employees[index].position = position;
+    _list[0].employees[index].skill = skills;
+  }
+
+  // void add({required String name, required String phone}) {
+  //   int red = Random().nextInt(255);
+  //   int green = Random().nextInt(255);
+  //   int blue = Random().nextInt(255);
+
+  //   _list.add(
+  //     Contact(
+  //       name: name,
+  //       phone: phone,
+  //       color: Color.fromARGB(255, red, green, blue),
+  //     ),
+  //   );
 }

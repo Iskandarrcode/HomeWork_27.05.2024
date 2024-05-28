@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class ToDoEdit extends StatefulWidget {
-  final nameController;
-  final ageController;
-  final positionController;
-  final skillController;
-  final indexController;
+  final TextEditingController nameController;
+  final TextEditingController ageController;
+  final TextEditingController positionController;
+  final TextEditingController skillController;
+  final TextEditingController indexController;
 
   ToDoEdit({
     super.key,
@@ -145,7 +145,15 @@ class ToDoEditDialogState extends State<ToDoEdit> {
           child: const Text("Bekor qilish"),
         ),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context, {
+              "index": int.parse(widget.indexController.text),
+              "name": widget.nameController.text,
+              "age": widget.ageController.text,
+              "position": widget.positionController.text,
+              "skills": widget.skillController.text,
+            });
+          },
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.blue,
             foregroundColor: Colors.white,

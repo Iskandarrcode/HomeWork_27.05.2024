@@ -5,10 +5,10 @@ part "model_employess.g.dart";
 
 @JsonSerializable()
 class Employees {
-  final String name;
-  final int age;
-  final String position;
-  final List skill;
+   String name;
+   int age;
+   String position;
+   List skill;
 
   Employees({
     required this.name,

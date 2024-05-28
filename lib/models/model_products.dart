@@ -4,9 +4,9 @@ part "model_products.g.dart";
 
 @JsonSerializable()
 class Products {
-  final String name;
-  final double price;
-  final bool inStock;
+   String name;
+   double price;
+   bool inStock;
 
   Products({
     required this.name,
